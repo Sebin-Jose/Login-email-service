@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script>
+        function validateMe(event){
+            if(document.getElementById("username").value.length==0){
+                alert("Username cannot be empty!!!");
+                document.getElementById("username").focus();
+                event.preventDefault();
+            }else if(document.getElementById("password").value.length==0){
+                alert("Password cannot be empty!!!");
+                document.getElementById("password").focus();
+                event.preventDefault();
+            }else if(document.getElementById("cpwd").value.length==0){
+                alert("Please confirm the password!!!")
+                document.getElementById("cpwd").focus();
+                event.preventDefault();
+            }else if(document.getElementById("password").value!=document.getElementById("cpwd").value){
+                alert("Password and confirmed password do not match!!!");
+                document.getElementById("password").value="";
+                document.getElementById("cpwd").value="";
+                document.getElementById("password").focus();
+                event.preventDefault();
+            }else if(document.getElementById("mail").value.length==0){
+                alert("Mail ID cannot be empty!!!");
+                document.getElementById("mail").focus();
+                event.preventDefault();
+            }
+        }
+        function clearMe(){
+            document.getElementById("username").value="";
+            document.getElementById("password").value="";
+            document.getElementById("cpwd").value="";
+            document.getElementById("mail").value="";
+            document.getElementById("username").focus();
+        }
+    </script>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form action="#" th:action="@{register}" th:object="${user}" method="post">
+        <table>
+            <tr>
+                <td><label>Username:</label></td>
+                <td><input type="text" name="username" id="username" th:field="*{username}" autofocus/></td>
+            </tr>
+            <tr>
+                <td><label>Password:</label></td>
+                <td><input type="password" name="password" id="password" th:field="*{password}"/></td>
+            </tr>
+            <tr>
+                <td><label>Confirm Password:</label></td>
+                <td><input type="password" name="cpwd" id="cpwd"/></td>
+            </tr>
+            <tr>
+                <td><label>Mail ID:</label></td>
+                <td><input type="mail" id="mail" name="mail" th:field="*{mail}"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Register" onclick="validateMe(event)"/></td>
+                <td><input type="button" value="Clear" onclick="clearMe()"/></td>
+            </tr>
+        </table>
+        <a href="/login">Back</a>
+    </form>
+</body>
+</html>

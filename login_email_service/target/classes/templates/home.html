@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body></body>
+    
+    <h1>Home Page</h1>
+    <h2 th:text="'Welcome '+${user.username}"></h2>
+    <a th:href="@{/update/{id}(id=${user.id})}">Update Profile</a>
+    <br>
+    <a href="/login">Log Out</a>
+</body>
+</html>

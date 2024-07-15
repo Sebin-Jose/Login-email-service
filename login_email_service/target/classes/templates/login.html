@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script>
+        function validateMe(event){
+            if(document.getElementById("username").value.length==0){
+                alert("Username cannot be empty!!!");
+                event.preventDefault();
+            }else if(document.getElementById("password").value.length==0){
+                alert("Password cannot be empty!!!");
+                event.preventDefault();
+            }
+        }
+        function clearMe(){
+            document.getElementById("username").value="";
+            document.getElementById("password").value="";
+            document.getElementById("username").focus();
+        }
+    </script>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="#" th:action="@{/logincheck}" th:object="${user}" method="get">
+        <table>
+            <tr>
+                <td><label>Username:</label></td>
+                <td><input type="text" name="username" id="username" th:field="*{username}" autofocus/></td>
+            </tr>
+            <tr>
+                <td><label>Password:</label></td>
+                <td><input type="password" name="password" id="password" th:field="*{password}"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Login" onclick="validateMe(event)"/></td>
+                <td><input type="button" value="Clear" onclick="clearMe()"/></td>
+            </tr>
+        </table>
+    </form>
+    <a href="/registerform">Sign Up!</a>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Message</title>
+</head>
+<body>
+    <h1 style="color: red;">Login failed!!! New User? Sign-up for free...</h1>
+    <p th:text="${message}"></p>
+    <br>
+    <a href="/login">Back to Login and Registration</a>
+</body>
+</html>
